@@ -1,0 +1,39 @@
+﻿@using ViewsExample.Models;
+@{
+	string appTitle = "ASP.Net Core Development. Hello Guys";
+	Person person = new Person
+			{
+				Name = "John Doe",
+				BirthDate = Convert.ToDateTime("2000-01-01")
+				// BirthDate=null
+			};
+	
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dotNet</title>
+	<link rel="stylesheet" href="~/css/StyleSheet.css" />
+
+</head>
+<body>
+
+	<h1>@appTitle</h1>
+
+	<p>Hello @person.Name</p>
+	@if (person.BirthDate.HasValue)
+	{
+
+		double age = DateTime.Today.Year - person.BirthDate.Value.Year;
+		<p>Your Birth Date is: @person.BirthDate </p>
+		<p>Your Currents Age is: @age</p>
+	}
+	else
+	{
+	<h1>Birthdate not Provided</h1>	
+	}
+	<p><button>Click Me</button></p>
+
+</body>
+</html>
