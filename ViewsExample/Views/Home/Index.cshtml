@@ -1,39 +1,47 @@
 ﻿@using ViewsExample.Models;
+
 @{
-	string appTitle = "ASP.Net Core Development. Hello Guys";
-	Person person = new Person
-			{
-				Name = "John Doe",
-				BirthDate = Convert.ToDateTime("2000-01-01")
-				// BirthDate=null
-			};
-	
+   // List <Person>? people= (List<Person>?)ViewData["people"];
 }
 
-<!DOCTYPE html>
+
+<!DOCTYPE html> 
 <html>
 <head>
-	<title>dotNet</title>
-	<link rel="stylesheet" href="~/css/StyleSheet.css" />
-
+    <title>DotNet</title>
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
 </head>
 <body>
+    <h1>@ViewBag.appTitle</h1>
 
-	<h1>@appTitle</h1>
+   
+    <text>This is the For Loop</text>
+        @* @foreach (Person person in ViewBag.people) *@
+        @foreach (Person person in Model)
+        {   
+            <div class="out-box">
+            @person.Name
 
-	<p>Hello @person.Name</p>
-	@if (person.BirthDate.HasValue)
-	{
+        <div class="box">
+            @person.PersonGender
+        </div>   
 
-		double age = DateTime.Today.Year - person.BirthDate.Value.Year;
-		<p>Your Birth Date is: @person.BirthDate </p>
-		<p>Your Currents Age is: @age</p>
-	}
-	else
-	{
-	<h1>Birthdate not Provided</h1>	
-	}
-	<p><button>Click Me</button></p>
+            <div class="box">
+				@person.BirthDate.Value.ToString("dd/MM/yyyy")
+            </div>
+            <a href="person-details/@person.Name">Details</a>
+        </div>
+        }
 
+    
+
+    <p><button onclick="showAlert()">Click Me</button></p>
+    <script>
+		function showAlert() {
+           peopleCount=@ViewBag.people.Count;
+			alert(peopleCount+' people found');
+		}
+
+    </script>
 </body>
 </html>

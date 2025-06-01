@@ -1,0 +1,21 @@
+﻿@using ViewsExample.Models;
+@model Person
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Person Details</title>
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
+</head>
+<body>
+    <h1>Person Details</h1>
+    <div class="box">
+        <p><strong>Name:</strong> @Model.Name</p>
+        <p><strong>Birth Date:</strong> @(Model.BirthDate.HasValue ? Model.BirthDate.Value.ToString("dd/MM/yyyy") : "N/A")</p>
+        <p><strong>Gender:</strong> @Model.PersonGender</p>
+    </div>
+    <p>
+        <a href="/">Back to List</a>
+    </p>
+</body>
+</html>
